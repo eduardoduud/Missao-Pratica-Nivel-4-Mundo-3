@@ -8,11 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>Cadastro de Produto</h1>
+        <c:if test="${produto != null}">
+            <h1>Alteração de Produto</h1>
+        </c:if>
+        <c:if test="${produto == null}">
+            <h1>Cadastro de Produto</h1>
+        </c:if>
         <form action="ServletProduto" method="post">
             <input type="hidden" name="acao" value="${produto != null ? 'alterar' : 'incluir'}">
             <c:if test="${produto != null}">
-                <input name="id" value="${produto.idProduto}">
+                <input type="hidden" name="id" value="${produto.idProduto}">
             </c:if>
             <div class="form-group">
                 <label for="nome">Nome</label>
